@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>人脸考勤系统（可以运行在CPU） | Neko聊编程</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <meta name="description" content="人生的光荣，不在永不失败，而在于能够屡败屡起。">
+    <meta name="keywords" content="Neko聊编程,vuepress,个人博客,Neko">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta name="robots" content="all">
+    <meta name="author" content="Neko">
+    
+    <link rel="preload" href="/assets/css/0.styles.31b588f1.css" as="style"><link rel="preload" href="/assets/js/app.5f6f0107.js" as="script"><link rel="preload" href="/assets/js/4.4cc306a1.js" as="script"><link rel="preload" href="/assets/js/1.9ea8ecf4.js" as="script"><link rel="preload" href="/assets/js/29.973ac70f.js" as="script"><link rel="preload" href="/assets/js/11.dc3db45b.js" as="script"><link rel="prefetch" href="/assets/js/10.7d1ea9c4.js"><link rel="prefetch" href="/assets/js/12.ebf9f6c0.js"><link rel="prefetch" href="/assets/js/13.2b5bf40d.js"><link rel="prefetch" href="/assets/js/14.5a14bb6e.js"><link rel="prefetch" href="/assets/js/15.1c2dff78.js"><link rel="prefetch" href="/assets/js/16.b6bed031.js"><link rel="prefetch" href="/assets/js/17.cee37c80.js"><link rel="prefetch" href="/assets/js/18.f1043388.js"><link rel="prefetch" href="/assets/js/19.ac696d7c.js"><link rel="prefetch" href="/assets/js/20.52472f84.js"><link rel="prefetch" href="/assets/js/21.b4748920.js"><link rel="prefetch" href="/assets/js/22.b0304137.js"><link rel="prefetch" href="/assets/js/23.881d767c.js"><link rel="prefetch" href="/assets/js/24.b876d1a7.js"><link rel="prefetch" href="/assets/js/25.3d87597e.js"><link rel="prefetch" href="/assets/js/26.88d61251.js"><link rel="prefetch" href="/assets/js/27.cd555bc9.js"><link rel="prefetch" href="/assets/js/28.e520edd2.js"><link rel="prefetch" href="/assets/js/30.b0f922a4.js"><link rel="prefetch" href="/assets/js/31.d5e9b587.js"><link rel="prefetch" href="/assets/js/32.ad87eda3.js"><link rel="prefetch" href="/assets/js/5.9bf1ef11.js"><link rel="prefetch" href="/assets/js/6.7917ba30.js"><link rel="prefetch" href="/assets/js/7.4bf62a14.js"><link rel="prefetch" href="/assets/js/8.3fec3cc6.js"><link rel="prefetch" href="/assets/js/9.824907ac.js"><link rel="prefetch" href="/assets/js/vendors~flowchart.481a257a.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.31b588f1.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div><div class="theme-container" data-v-4698c43e><div data-v-4698c43e><div id="loader-wrapper" class="loading-wrapper" data-v-1c4f0192 data-v-4698c43e data-v-4698c43e><div class="loader-main" data-v-1c4f0192><div data-v-1c4f0192></div><div data-v-1c4f0192></div><div data-v-1c4f0192></div><div data-v-1c4f0192></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-6cbeab0a data-v-4698c43e data-v-4698c43e><h3 class="title" style="display:none;" data-v-6cbeab0a data-v-6cbeab0a>Neko聊编程</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-6cbeab0a data-v-6cbeab0a><input type="password" value="" data-v-6cbeab0a> <span data-v-6cbeab0a>Konck! Knock!</span> <button data-v-6cbeab0a>OK</button></label> <div class="footer" style="display:none;" data-v-6cbeab0a data-v-6cbeab0a><span data-v-6cbeab0a><i class="iconfont reco-theme" data-v-6cbeab0a></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-6cbeab0a>vuePress-theme-reco</a></span> <span data-v-6cbeab0a><i class="iconfont reco-copyright" data-v-6cbeab0a></i> <a data-v-6cbeab0a><span data-v-6cbeab0a>Neko</span>
+            
+          <span data-v-6cbeab0a>2022 - </span>
+          2026
+        </a></span></div></div> <div class="hide" data-v-4698c43e><header class="navbar" data-v-4698c43e><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Neko聊编程</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-eye"></i>
+      深度学习
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>项目</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/深度学习/人脸考勤机/face.html" class="nav-link"><i class="iconfont undefined"></i>
+  人脸考勤机
+</a></li><li class="dropdown-subitem"><a href="/深度学习/人脸口罩检测与规范佩戴识别/mask.html" class="nav-link"><i class="iconfont undefined"></i>
+  人脸口罩检测与规范佩戴识别
+</a></li><li class="dropdown-subitem"><a href="/深度学习/UNet医学图片分割/unet.html" class="nav-link"><i class="iconfont undefined"></i>
+  UNet医学图片分割
+</a></li><li class="dropdown-subitem"><a href="/深度学习/车辆统计/cars.html" class="nav-link"><i class="iconfont undefined"></i>
+  车辆统计
+</a></li><li class="dropdown-subitem"><a href="/深度学习/金属孔洞缺陷检测/hole.html" class="nav-link"><i class="iconfont undefined"></i>
+  金属孔洞缺陷检测
+</a></li><li class="dropdown-subitem"><a href="/深度学习/3D打印机裹头/printer.html" class="nav-link"><i class="iconfont undefined"></i>
+  3D打印机裹头
+</a></li><li class="dropdown-subitem"><a href="/深度学习/草地分割/grass.html" class="nav-link"><i class="iconfont undefined"></i>
+  割草机
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-api"></i>
+      技术文章
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Java</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/技术文章/java/spring.html" class="nav-link"><i class="iconfont undefined"></i>
+  Spring
+</a></li><li class="dropdown-subitem"><a href="/技术文章/java/thread.html" class="nav-link"><i class="iconfont undefined"></i>
+  线程
+</a></li></ul></li><li class="dropdown-item"><h4>前端</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/技术文章/前端/html.html" class="nav-link"><i class="iconfont undefined"></i>
+  html
+</a></li><li class="dropdown-subitem"><a href="/技术文章/前端/vue3.html" class="nav-link"><i class="iconfont undefined"></i>
+  vue3
+</a></li></ul></li><li class="dropdown-item"><h4>Nginx</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/技术文章/Nginx/Nginx.html" class="nav-link"><i class="iconfont undefined"></i>
+  Nginx
+</a></li><li class="dropdown-subitem"><a href="/技术文章/Nginx/Nginx与https.html" class="nav-link"><i class="iconfont undefined"></i>
+  Nginx与https
+</a></li></ul></li><li class="dropdown-item"><h4>Linux</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/技术文章/Linux/Linux.html" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/英语/English.html" class="nav-link"><i class="iconfont reco-faq"></i>
+  英语
+</a></div><div class="nav-item"><a href="/算法/algorithm.html" class="nav-link"><i class="iconfont reco-date"></i>
+  算法
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-4698c43e></div> <aside class="sidebar" data-v-4698c43e><div class="personal-info-wrapper" data-v-6c8ffc9c><img src="/logo.png" alt="author-avatar" class="personal-img" data-v-6c8ffc9c> <h3 class="name" data-v-6c8ffc9c>
+    Neko
+  </h3> <div class="num" data-v-6c8ffc9c><div data-v-6c8ffc9c><h3 data-v-6c8ffc9c>16</h3> <h6 data-v-6c8ffc9c>文章</h6></div> <div data-v-6c8ffc9c><h3 data-v-6c8ffc9c>16</h3> <h6 data-v-6c8ffc9c>标签</h6></div></div> <hr data-v-6c8ffc9c></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-eye"></i>
+      深度学习
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>项目</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/深度学习/人脸考勤机/face.html" class="nav-link"><i class="iconfont undefined"></i>
+  人脸考勤机
+</a></li><li class="dropdown-subitem"><a href="/深度学习/人脸口罩检测与规范佩戴识别/mask.html" class="nav-link"><i class="iconfont undefined"></i>
+  人脸口罩检测与规范佩戴识别
+</a></li><li class="dropdown-subitem"><a href="/深度学习/UNet医学图片分割/unet.html" class="nav-link"><i class="iconfont undefined"></i>
+  UNet医学图片分割
+</a></li><li class="dropdown-subitem"><a href="/深度学习/车辆统计/cars.html" class="nav-link"><i class="iconfont undefined"></i>
+  车辆统计
+</a></li><li class="dropdown-subitem"><a href="/深度学习/金属孔洞缺陷检测/hole.html" class="nav-link"><i class="iconfont undefined"></i>
+  金属孔洞缺陷检测
+</a></li><li class="dropdown-subitem"><a href="/深度学习/3D打印机裹头/printer.html" class="nav-link"><i class="iconfont undefined"></i>
+  3D打印机裹头
+</a></li><li class="dropdown-subitem"><a href="/深度学习/草地分割/grass.html" class="nav-link"><i class="iconfont undefined"></i>
+  割草机
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-api"></i>
+      技术文章
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Java</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/技术文章/java/spring.html" class="nav-link"><i class="iconfont undefined"></i>
+  Spring
+</a></li><li class="dropdown-subitem"><a href="/技术文章/java/thread.html" class="nav-link"><i class="iconfont undefined"></i>
+  线程
+</a></li></ul></li><li class="dropdown-item"><h4>前端</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/技术文章/前端/html.html" class="nav-link"><i class="iconfont undefined"></i>
+  html
+</a></li><li class="dropdown-subitem"><a href="/技术文章/前端/vue3.html" class="nav-link"><i class="iconfont undefined"></i>
+  vue3
+</a></li></ul></li><li class="dropdown-item"><h4>Nginx</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/技术文章/Nginx/Nginx.html" class="nav-link"><i class="iconfont undefined"></i>
+  Nginx
+</a></li><li class="dropdown-subitem"><a href="/技术文章/Nginx/Nginx与https.html" class="nav-link"><i class="iconfont undefined"></i>
+  Nginx与https
+</a></li></ul></li><li class="dropdown-item"><h4>Linux</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/技术文章/Linux/Linux.html" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/英语/English.html" class="nav-link"><i class="iconfont reco-faq"></i>
+  英语
+</a></div><div class="nav-item"><a href="/算法/algorithm.html" class="nav-link"><i class="iconfont reco-date"></i>
+  算法
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>人脸考勤机</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/深度学习/人脸考勤机/face.html" class="active sidebar-link">人脸考勤系统（可以运行在CPU）</a></li></ul></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-6cbeab0a data-v-4698c43e><h3 class="title" style="display:none;" data-v-6cbeab0a data-v-6cbeab0a>人脸考勤系统（可以运行在CPU）</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-6cbeab0a data-v-6cbeab0a><input type="password" value="" data-v-6cbeab0a> <span data-v-6cbeab0a>Konck! Knock!</span> <button data-v-6cbeab0a>OK</button></label> <div class="footer" style="display:none;" data-v-6cbeab0a data-v-6cbeab0a><span data-v-6cbeab0a><i class="iconfont reco-theme" data-v-6cbeab0a></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-6cbeab0a>vuePress-theme-reco</a></span> <span data-v-6cbeab0a><i class="iconfont reco-copyright" data-v-6cbeab0a></i> <a data-v-6cbeab0a><span data-v-6cbeab0a>Neko</span>
+            
+          <span data-v-6cbeab0a>2022 - </span>
+          2026
+        </a></span></div></div> <div data-v-4698c43e><main class="page"><!----> <div class="page-title" style="display:none;"><h1>人脸考勤系统（可以运行在CPU）</h1> <hr> <div data-v-484a899e><i class="iconfont reco-account" data-v-484a899e><span data-v-484a899e>Neko</span></i> <i class="iconfont reco-date" data-v-484a899e><span data-v-484a899e>2022-08-26 12:14:06</span></i> <!----> <i class="iconfont reco-tag tags" data-v-484a899e><span class="tag-item" data-v-484a899e>
+      hog_face_detector
+    </span></i></div></div> <div class="theme-reco-content content__default" style="display:none;"><p>人脸考勤系统（可以运行在CPU）
+1、人脸检测：
+2、注册人脸，将人脸特征存储进feature.csv
+3、识别人脸，将考勤数据存进attendance.csv</p> <div class="language- line-numbers-mode"><pre class="language-text"><code># 导入包
+import cv2
+import numpy as np
+import dlib
+import time
+import csv
+from argparse import ArgumentParser
+# 导入PIL
+from PIL import Image, ImageDraw, ImageFont
+
+
+
+# 加载人脸检测器
+hog_face_detector = dlib.get_frontal_face_detector()
+cnn_detector = dlib.cnn_face_detection_model_v1('./weights/mmod_human_face_detector.dat')
+haar_face_detector  = cv2.CascadeClassifier('./weights/haarcascade_frontalface_default.xml')
+
+# 加载关键点检测器
+points_detector = dlib.shape_predictor('./weights/shape_predictor_68_face_landmarks.dat')
+# 加载resnet模型
+face_descriptor_extractor = dlib.face_recognition_model_v1('./weights/dlib_face_recognition_resnet_model_v1.dat')
+
+# 绘制中文
+def cv2AddChineseText(img, text, position, textColor=(0, 255, 0), textSize=30):
+    
+    if (isinstance(img, np.ndarray)):  # 判断是否OpenCV图片类型
+        img = Image.fromarray(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
+    # 创建一个可以在给定图像上绘图的对象
+    draw = ImageDraw.Draw(img)
+    # 字体的格式
+    fontStyle = ImageFont.truetype(
+        &quot;./fonts/songti.ttc&quot;, textSize, encoding=&quot;utf-8&quot;)
+    # 绘制文本
+    draw.text(position, text, textColor, font=fontStyle)
+    # 转换回OpenCV格式
+    return cv2.cvtColor(np.asarray(img), cv2.COLOR_RGB2BGR)
+
+
+# 绘制左侧信息
+def drawLeftInfo(frame,fpsText,mode=&quot;Reg&quot;,detector='haar',person=1, count=1):
+    
+    # 帧率
+    cv2.putText(frame, &quot;FPS:  &quot; + str(round(fpsText,2)), (30, 50), cv2.FONT_ITALIC, 0.8, (0, 255, 0), 2)
+
+    # 模式：注册、识别
+    cv2.putText(frame, &quot;Mode:  &quot; + str(mode), (30, 80), cv2.FONT_ITALIC, 0.8, (0, 255, 0), 2)
+
+    if mode == 'Recog':
+        # 检测器
+        cv2.putText(frame, &quot;Detector:  &quot; + detector, (30, 110), cv2.FONT_ITALIC, 0.8, (0, 255, 0), 2)
+
+        # 人数
+        cv2.putText(frame, &quot;Person:  &quot; + str(person), (30, 140), cv2.FONT_ITALIC, 0.8, (0, 255, 0), 2)
+
+        # 总人数
+        cv2.putText(frame, &quot;Count:  &quot; + str(count), (30, 170), cv2.FONT_ITALIC,0.8, (0, 255, 0), 2)
+
+
+# 注册人脸
+def faceRegiser(faceId=1,userName='default',interval=3,faceCount=3,resize_w=700,resize_h=400):
+
+    # 计数
+    count = 0
+    # 开始注册时间
+    startTime = time.time()
+
+    # 视频时间
+    frameTime = startTime
+
+    # 控制显示打卡成功的时长
+    show_time = (startTime - 10)
+
+    # 打开文件
+    f =  open('./data/feature.csv','a',newline='')
+    csv_writer = csv.writer(f)
+
+    cap = cv2.VideoCapture(0)
+
+    while True:
+        ret,frame = cap.read()
+        frame = cv2.resize(frame,(resize_w,resize_h))
+        frame = cv2.flip(frame,1)
+
+        # 检测
+        face_detetion = hog_face_detector(frame,1)
+
+        for face in face_detetion:
+            # 识别68个关键点
+            points = points_detector(frame,face)
+            # 绘制人脸关键点
+            for point in points.parts():
+                cv2.circle(frame,(point.x,point.y),2,(255,0,255),1)
+            # 绘制框框
+            l,t,r,b = face.left(),face.top(),face.right(),face.bottom()
+            cv2.rectangle(frame,(l,t),(r,b),(0,255,0),2)
+
+            now = time.time()
+            
+            if  (now - show_time) &lt; 0.5:
+                frame = cv2AddChineseText(frame, &quot;注册成功 {count}/{faceCount}&quot;.format(count=(count+1),faceCount=faceCount) ,  (l, b+30), textColor=(255, 0, 255), textSize=40)
+
+
+            # 检查次数
+
+            if count &lt; faceCount:
+
+                # 检查时间
+                if now - startTime &gt; interval:
+
+                    # 特征描述符
+                    face_descriptor = face_descriptor_extractor.compute_face_descriptor(frame,points)
+                    
+                    face_descriptor = [f for f in face_descriptor ]
+
+                    # 描述符增加进data文件
+                    line = [faceId,userName,face_descriptor]
+                    # 写入
+                    csv_writer.writerow(line)
+                    
+                    # 保存照片样本
+
+                    print('人脸注册成功 {count}/{faceCount}，faceId:{faceId}，userName:{userName}'.format(count=(count+1),faceCount=faceCount,faceId=faceId,userName=userName))
+
+                    frame = cv2AddChineseText(frame, &quot;注册成功 {count}/{faceCount}&quot;.format(count=(count+1),faceCount=faceCount) ,  (l, b+30), textColor=(255, 0, 255), textSize=40)
+                    show_time = time.time()
+
+
+                    # 时间重置
+                    startTime = now
+                    # 次数加一
+                    count +=1
+                
+                
+            else:
+                print('人脸注册完毕')
+                return
+
+            
+            
+            # 只取其中一张脸
+            break
+
+        now = time.time()
+        fpsText = 1 / (now - frameTime)
+        frameTime = now
+        # 绘制
+        drawLeftInfo(frame,fpsText,'Register')
+
+        cv2.imshow('Face Attendance Demo: Register',frame)
+        if cv2.waitKey(10) &amp; 0xFF == ord('q'):
+            break
+
+            
+    f.close()
+    cap.release()
+    cv2.destroyAllWindows()
+
+# 刷新右侧考勤信息
+def updateRightInfo(frame,face_info_list,face_img_list):
+    
+    # 重新绘制逻辑：从列表中每隔3个取一批显示，新增人脸放在最前面
+    
+    # 如果有更新，重新绘制
+
+    # 如果没有，定时往后移动
+
+    left_x = 30
+    left_y = 20
+    resize_w = 80
+
+    offset_y = 120
+    index = 0
+
+    frame_h = frame.shape[0]
+    frame_w = frame.shape[1]
+    
+
+    for face in face_info_list[:3]:
+        name = face[0]
+        time = face[1]
+        face_img = face_img_list[index]
+
+        # print(face_img.shape)
+        
+        face_img = cv2.resize(face_img,(resize_w,resize_w))
+        
+        offset_y_value = offset_y * index
+        frame[(left_y+offset_y_value):(left_y+resize_w+ offset_y_value), -(left_x+resize_w):-left_x] = face_img
+        
+        cv2.putText(frame, name, ((frame_w-(left_x+resize_w)), (left_y+resize_w)+15 + offset_y_value), cv2.FONT_ITALIC, 0.5, (0, 255, 0), 1)
+        cv2.putText(frame, time, ((frame_w-(left_x+resize_w)), (left_y+resize_w)+30 + offset_y_value), cv2.FONT_ITALIC, 0.5, (0, 255, 0), 1)
+
+        index+=1
+
+    return frame
+
+# 返回DLIB格式的face
+def getDlibRect(detector='hog',face=None):
+   
+    l,t,r,b = None,None,None,None
+
+    if detector == 'hog':
+        l,t,r,b = face.left(),face.top(),face.right(),face.bottom()
+        
+
+    if detector == 'cnn':
+        l = face.rect.left()
+        t = face.rect.top()
+        r = face.rect.right()
+        b = face.rect.bottom()
+
+        
+    if detector == 'haar':
+        l = face[0]
+        t = face[1]
+        r = face[0] + face[2]
+        b = face[1] + face[3]
+        
+    nonnegative = lambda x : x if x &gt;= 0 else 0  
+    return map(nonnegative,(l,t,r,b ))
+
+# 获取CSV中信息
+def getFeatList():
+    print('加载注册的人脸特征')
+
+    feature_list = None
+    label_list = []
+    name_list = []
+
+    # 加载保存的特征样本
+    with open('./data/feature.csv','r') as f:
+        csv_reader = csv.reader(f)
+        for line in csv_reader:
+            # 重新加载数据
+            faceId = line[0]
+            userName = line[1]
+            face_descriptor = eval(line[2])
+
+            label_list.append(faceId)
+            name_list.append(userName)
+            
+            # 转为numpy格式
+            face_descriptor = np.asarray(face_descriptor,dtype=np.float64)
+            # 转为二维矩阵，拼接
+            face_descriptor = np.reshape(face_descriptor,(1,-1))
+            # 初始化
+            if feature_list is None:
+                feature_list = face_descriptor
+            else:
+                # 拼接
+                feature_list = np.concatenate((feature_list,face_descriptor),axis=0)
+    print(&quot;特征加载完毕&quot;)
+    return feature_list,label_list,name_list
+
+# 人脸识别
+def faceRecognize(detector='haar',threshold=0.5, write_video = False,resize_w=700,resize_h=400):
+   
+    # 视频时间
+    frameTime = time.time()
+
+    # 加载特征
+    feature_list,label_list,name_list = getFeatList()
+
+    face_time_dict = {}
+    # 保存name,time人脸信息
+    face_info_list = []
+    # numpy格式人脸图像数据
+    face_img_list = []
+
+    # 侦测人数
+    person_detect = 0
+
+    # 统计人脸数
+    face_count = 0
+
+    # 控制显示打卡成功的时长
+    show_time = (frameTime - 10)
+
+    # 考勤记录
+    f = open('./data/attendance.csv','a')
+    csv_writer = csv.writer(f)
+
+    cap = cv2.VideoCapture(0)
+    # resize_w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))//2
+    # resize_h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT)) //2
+
+    videoWriter = cv2.VideoWriter('./record_video/out'+str(time.time())+'.mp4', cv2.VideoWriter_fourcc(*'MP4V'), 15, (resize_w,resize_h))
+
+    while True:
+        ret,frame = cap.read()
+        frame = cv2.resize(frame,(resize_w,resize_h))
+        frame = cv2.flip(frame,1)
+        
+        
+        # 切换人脸检测器
+        if detector == 'hog':
+            face_detetion = hog_face_detector(frame,1)
+        if detector == 'cnn':
+            face_detetion = cnn_detector(frame,1)
+        if detector == 'haar':   
+            frame_gray = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY) 
+            face_detetion = haar_face_detector.detectMultiScale(frame_gray,minNeighbors=7,minSize=(100,100))
+
+        person_detect = len(face_detetion)
+
+        for face in face_detetion:
+            
+           
+            l,t,r,b = getDlibRect(detector,face)
+
+            face = dlib.rectangle(l,t,r,b) 
+
+            # 识别68个关键点
+            points = points_detector(frame,face)
+
+            cv2.rectangle(frame,(l,t),(r,b),(0,255,0),2)
+
+            # 人脸区域
+            face_crop = frame[t:b,l:r]
+            
+
+            #特征
+            face_descriptor = face_descriptor_extractor.compute_face_descriptor(frame,points)   
+            face_descriptor = [f for f in face_descriptor ]
+            face_descriptor = np.asarray(face_descriptor,dtype=np.float64)
+
+            # 计算距离
+            distance = np.linalg.norm((face_descriptor-feature_list),axis = 1)
+            # 最小距离索引
+            min_index = np.argmin(distance)
+            # 最小距离
+            min_distance = distance[min_index]
+
+            predict_name = &quot;Not recog&quot;
+
+            if min_distance &lt; threshold:
+                # 距离小于阈值，表示匹配
+                predict_id = label_list[min_index]
+                predict_name = name_list[min_index]
+
+                 # 判断是否新增记录：如果一个人距上次检测时间&gt;3秒，或者换了一个人，将这条记录插入
+                need_insert = False
+                now = time.time()
+                if predict_name in face_time_dict:
+                    if (now - face_time_dict[predict_name]) &gt; 3:
+                        # 刷新时间
+                        face_time_dict[predict_name] = now
+                        need_insert = True
+                    else:
+                        # 还是上次人脸
+                        need_insert = False
+
+                else:
+                    # 新增数据记录
+                    face_time_dict[predict_name] = now
+                    need_insert = True
+                    
+                if  (now - show_time) &lt; 1:
+                    frame = cv2AddChineseText(frame, &quot;打卡成功&quot; ,  (l, b+30), textColor=(0, 255, 0), textSize=40)    
+                
+                
+                if need_insert:
+
+                    # 连续显示打卡成功1s
+                    frame = cv2AddChineseText(frame, &quot;打卡成功&quot; ,  (l, b+30), textColor=(0, 255, 0), textSize=40)    
+                    show_time = time.time()
+
+
+                    time_local = time.localtime(face_time_dict[predict_name])
+                    #转换成新的时间格式(2016-05-05 20:28:54)
+                    face_time = time.strftime(&quot;%H:%M:%S&quot;,time_local)
+                    face_time_full = time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;,time_local)
+
+                    # 开始位置增加
+
+                    face_info_list.insert(0,[predict_name,face_time])
+                    face_img_list.insert( 0, face_crop )
+
+                    # 写入考勤表
+                    line = [predict_id,predict_name,min_distance,face_time_full]
+                    csv_writer.writerow(line)
+
+                    face_count+=1
+
+
+            # 绘制人脸点
+            cv2.putText(frame, predict_name + &quot; &quot; + str(round(min_distance,2)) , (l, b+30), cv2.FONT_ITALIC, 0.8, (0, 255, 0), 2)
+            
+            # 处理下一张脸
+
+
+
+        now = time.time()
+        fpsText = 1 / (now - frameTime)
+        frameTime = now
+        # 绘制
+        drawLeftInfo(frame,fpsText,'Recog',detector=detector,person=person_detect, count=face_count)
+
+        # 舍弃face_img_list、face_info_list后部分，节约内存
+        if len(face_info_list) &gt; 10:
+            face_info_list = face_info_list[:9]
+            face_img_list = face_img_list[:9]
+
+        frame = updateRightInfo(frame,face_info_list,face_img_list)
+
+        if write_video:
+            videoWriter.write(frame)
+
+        cv2.imshow('Face Attendance Demo: Recognition',frame)
+        if cv2.waitKey(10) &amp; 0xFF == ord('q'):
+            break
+
+            
+    f.close()
+    videoWriter.release()
+    cap.release()
+    cv2.destroyAllWindows()
+
+
+# 参数
+parser = ArgumentParser()
+parser.add_argument(&quot;--mode&quot;, type=str, default='reg',
+                    help=&quot;运行模式：reg,recog 对应：注册人脸、识别人脸&quot;)
+parser.add_argument(&quot;--id&quot;, type=int, default=1,
+                    help=&quot;人脸ID，正整数不可以重复&quot;)   
+
+parser.add_argument(&quot;--name&quot;, type=str, default='enpei',
+                    help=&quot;人脸姓名，英文格式&quot;)                       
+
+parser.add_argument(&quot;--interval&quot;, type=int, default=3,
+                    help=&quot;注册人脸每张间隔时间&quot;)    
+
+parser.add_argument(&quot;--count&quot;, type=int, default=3,
+                    help=&quot;注册人脸照片数量&quot;)        
+                   
+
+parser.add_argument(&quot;--w&quot;, type=int, default=700,
+                    help=&quot;画面缩放宽度&quot;)   
+parser.add_argument(&quot;--h&quot;, type=int, default=400,
+                    help=&quot;画面缩放高度&quot;)  
+
+parser.add_argument(&quot;--detector&quot;, type=str, default='haar',
+                    help=&quot;人脸识别使用的检测器，可选haar、hog、cnn&quot;)     
+
+parser.add_argument(&quot;--threshold&quot;, type=float, default=0.5,
+                    help=&quot;人脸识别距离阈值，越低越准确&quot;)                                               
+
+parser.add_argument(&quot;--record&quot;, type=bool, default=False,
+                    help=&quot;人脸识别是否录制&quot;)                                               
+
+args = parser.parse_args()
+
+
+
+mode = args.mode
+
+if mode == 'reg':
+    faceRegiser(faceId=args.id,userName=args.name,interval=args.interval,faceCount=args.count,resize_w=args.w,resize_h=args.h)    
+
+if  mode == 'recog':
+    faceRecognize(detector=args.detector,threshold=args.threshold, write_video = args.record,resize_w=args.w,resize_h=args.h)
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br><span class="line-number">149</span><br><span class="line-number">150</span><br><span class="line-number">151</span><br><span class="line-number">152</span><br><span class="line-number">153</span><br><span class="line-number">154</span><br><span class="line-number">155</span><br><span class="line-number">156</span><br><span class="line-number">157</span><br><span class="line-number">158</span><br><span class="line-number">159</span><br><span class="line-number">160</span><br><span class="line-number">161</span><br><span class="line-number">162</span><br><span class="line-number">163</span><br><span class="line-number">164</span><br><span class="line-number">165</span><br><span class="line-number">166</span><br><span class="line-number">167</span><br><span class="line-number">168</span><br><span class="line-number">169</span><br><span class="line-number">170</span><br><span class="line-number">171</span><br><span class="line-number">172</span><br><span class="line-number">173</span><br><span class="line-number">174</span><br><span class="line-number">175</span><br><span class="line-number">176</span><br><span class="line-number">177</span><br><span class="line-number">178</span><br><span class="line-number">179</span><br><span class="line-number">180</span><br><span class="line-number">181</span><br><span class="line-number">182</span><br><span class="line-number">183</span><br><span class="line-number">184</span><br><span class="line-number">185</span><br><span class="line-number">186</span><br><span class="line-number">187</span><br><span class="line-number">188</span><br><span class="line-number">189</span><br><span class="line-number">190</span><br><span class="line-number">191</span><br><span class="line-number">192</span><br><span class="line-number">193</span><br><span class="line-number">194</span><br><span class="line-number">195</span><br><span class="line-number">196</span><br><span class="line-number">197</span><br><span class="line-number">198</span><br><span class="line-number">199</span><br><span class="line-number">200</span><br><span class="line-number">201</span><br><span class="line-number">202</span><br><span class="line-number">203</span><br><span class="line-number">204</span><br><span class="line-number">205</span><br><span class="line-number">206</span><br><span class="line-number">207</span><br><span class="line-number">208</span><br><span class="line-number">209</span><br><span class="line-number">210</span><br><span class="line-number">211</span><br><span class="line-number">212</span><br><span class="line-number">213</span><br><span class="line-number">214</span><br><span class="line-number">215</span><br><span class="line-number">216</span><br><span class="line-number">217</span><br><span class="line-number">218</span><br><span class="line-number">219</span><br><span class="line-number">220</span><br><span class="line-number">221</span><br><span class="line-number">222</span><br><span class="line-number">223</span><br><span class="line-number">224</span><br><span class="line-number">225</span><br><span class="line-number">226</span><br><span class="line-number">227</span><br><span class="line-number">228</span><br><span class="line-number">229</span><br><span class="line-number">230</span><br><span class="line-number">231</span><br><span class="line-number">232</span><br><span class="line-number">233</span><br><span class="line-number">234</span><br><span class="line-number">235</span><br><span class="line-number">236</span><br><span class="line-number">237</span><br><span class="line-number">238</span><br><span class="line-number">239</span><br><span class="line-number">240</span><br><span class="line-number">241</span><br><span class="line-number">242</span><br><span class="line-number">243</span><br><span class="line-number">244</span><br><span class="line-number">245</span><br><span class="line-number">246</span><br><span class="line-number">247</span><br><span class="line-number">248</span><br><span class="line-number">249</span><br><span class="line-number">250</span><br><span class="line-number">251</span><br><span class="line-number">252</span><br><span class="line-number">253</span><br><span class="line-number">254</span><br><span class="line-number">255</span><br><span class="line-number">256</span><br><span class="line-number">257</span><br><span class="line-number">258</span><br><span class="line-number">259</span><br><span class="line-number">260</span><br><span class="line-number">261</span><br><span class="line-number">262</span><br><span class="line-number">263</span><br><span class="line-number">264</span><br><span class="line-number">265</span><br><span class="line-number">266</span><br><span class="line-number">267</span><br><span class="line-number">268</span><br><span class="line-number">269</span><br><span class="line-number">270</span><br><span class="line-number">271</span><br><span class="line-number">272</span><br><span class="line-number">273</span><br><span class="line-number">274</span><br><span class="line-number">275</span><br><span class="line-number">276</span><br><span class="line-number">277</span><br><span class="line-number">278</span><br><span class="line-number">279</span><br><span class="line-number">280</span><br><span class="line-number">281</span><br><span class="line-number">282</span><br><span class="line-number">283</span><br><span class="line-number">284</span><br><span class="line-number">285</span><br><span class="line-number">286</span><br><span class="line-number">287</span><br><span class="line-number">288</span><br><span class="line-number">289</span><br><span class="line-number">290</span><br><span class="line-number">291</span><br><span class="line-number">292</span><br><span class="line-number">293</span><br><span class="line-number">294</span><br><span class="line-number">295</span><br><span class="line-number">296</span><br><span class="line-number">297</span><br><span class="line-number">298</span><br><span class="line-number">299</span><br><span class="line-number">300</span><br><span class="line-number">301</span><br><span class="line-number">302</span><br><span class="line-number">303</span><br><span class="line-number">304</span><br><span class="line-number">305</span><br><span class="line-number">306</span><br><span class="line-number">307</span><br><span class="line-number">308</span><br><span class="line-number">309</span><br><span class="line-number">310</span><br><span class="line-number">311</span><br><span class="line-number">312</span><br><span class="line-number">313</span><br><span class="line-number">314</span><br><span class="line-number">315</span><br><span class="line-number">316</span><br><span class="line-number">317</span><br><span class="line-number">318</span><br><span class="line-number">319</span><br><span class="line-number">320</span><br><span class="line-number">321</span><br><span class="line-number">322</span><br><span class="line-number">323</span><br><span class="line-number">324</span><br><span class="line-number">325</span><br><span class="line-number">326</span><br><span class="line-number">327</span><br><span class="line-number">328</span><br><span class="line-number">329</span><br><span class="line-number">330</span><br><span class="line-number">331</span><br><span class="line-number">332</span><br><span class="line-number">333</span><br><span class="line-number">334</span><br><span class="line-number">335</span><br><span class="line-number">336</span><br><span class="line-number">337</span><br><span class="line-number">338</span><br><span class="line-number">339</span><br><span class="line-number">340</span><br><span class="line-number">341</span><br><span class="line-number">342</span><br><span class="line-number">343</span><br><span class="line-number">344</span><br><span class="line-number">345</span><br><span class="line-number">346</span><br><span class="line-number">347</span><br><span class="line-number">348</span><br><span class="line-number">349</span><br><span class="line-number">350</span><br><span class="line-number">351</span><br><span class="line-number">352</span><br><span class="line-number">353</span><br><span class="line-number">354</span><br><span class="line-number">355</span><br><span class="line-number">356</span><br><span class="line-number">357</span><br><span class="line-number">358</span><br><span class="line-number">359</span><br><span class="line-number">360</span><br><span class="line-number">361</span><br><span class="line-number">362</span><br><span class="line-number">363</span><br><span class="line-number">364</span><br><span class="line-number">365</span><br><span class="line-number">366</span><br><span class="line-number">367</span><br><span class="line-number">368</span><br><span class="line-number">369</span><br><span class="line-number">370</span><br><span class="line-number">371</span><br><span class="line-number">372</span><br><span class="line-number">373</span><br><span class="line-number">374</span><br><span class="line-number">375</span><br><span class="line-number">376</span><br><span class="line-number">377</span><br><span class="line-number">378</span><br><span class="line-number">379</span><br><span class="line-number">380</span><br><span class="line-number">381</span><br><span class="line-number">382</span><br><span class="line-number">383</span><br><span class="line-number">384</span><br><span class="line-number">385</span><br><span class="line-number">386</span><br><span class="line-number">387</span><br><span class="line-number">388</span><br><span class="line-number">389</span><br><span class="line-number">390</span><br><span class="line-number">391</span><br><span class="line-number">392</span><br><span class="line-number">393</span><br><span class="line-number">394</span><br><span class="line-number">395</span><br><span class="line-number">396</span><br><span class="line-number">397</span><br><span class="line-number">398</span><br><span class="line-number">399</span><br><span class="line-number">400</span><br><span class="line-number">401</span><br><span class="line-number">402</span><br><span class="line-number">403</span><br><span class="line-number">404</span><br><span class="line-number">405</span><br><span class="line-number">406</span><br><span class="line-number">407</span><br><span class="line-number">408</span><br><span class="line-number">409</span><br><span class="line-number">410</span><br><span class="line-number">411</span><br><span class="line-number">412</span><br><span class="line-number">413</span><br><span class="line-number">414</span><br><span class="line-number">415</span><br><span class="line-number">416</span><br><span class="line-number">417</span><br><span class="line-number">418</span><br><span class="line-number">419</span><br><span class="line-number">420</span><br><span class="line-number">421</span><br><span class="line-number">422</span><br><span class="line-number">423</span><br><span class="line-number">424</span><br><span class="line-number">425</span><br><span class="line-number">426</span><br><span class="line-number">427</span><br><span class="line-number">428</span><br><span class="line-number">429</span><br><span class="line-number">430</span><br><span class="line-number">431</span><br><span class="line-number">432</span><br><span class="line-number">433</span><br><span class="line-number">434</span><br><span class="line-number">435</span><br><span class="line-number">436</span><br><span class="line-number">437</span><br><span class="line-number">438</span><br><span class="line-number">439</span><br><span class="line-number">440</span><br><span class="line-number">441</span><br><span class="line-number">442</span><br><span class="line-number">443</span><br><span class="line-number">444</span><br><span class="line-number">445</span><br><span class="line-number">446</span><br><span class="line-number">447</span><br><span class="line-number">448</span><br><span class="line-number">449</span><br><span class="line-number">450</span><br><span class="line-number">451</span><br><span class="line-number">452</span><br><span class="line-number">453</span><br><span class="line-number">454</span><br><span class="line-number">455</span><br><span class="line-number">456</span><br><span class="line-number">457</span><br><span class="line-number">458</span><br><span class="line-number">459</span><br><span class="line-number">460</span><br><span class="line-number">461</span><br><span class="line-number">462</span><br></div></div></div> <footer class="page-edit" style="display:none;"><!----> <!----></footer> <!----> <!----></main> <!----> <div class="comments-wrapper" data-v-4698c43e><!----></div></div></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-44bd5a18 data-v-44bd5a18><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-44bd5a18><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-44bd5a18></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-44bd5a18></path></svg></div><!----><div></div><!----><!----></div></div>
+    <script src="/assets/js/app.5f6f0107.js" defer></script><script src="/assets/js/4.4cc306a1.js" defer></script><script src="/assets/js/1.9ea8ecf4.js" defer></script><script src="/assets/js/29.973ac70f.js" defer></script><script src="/assets/js/11.dc3db45b.js" defer></script>
+  </body>
+</html>
